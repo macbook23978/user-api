@@ -1,34 +1,47 @@
-# User API
+# MULE4 – User API
 
-Simple REST API for managing users.
+## Server
 
-## Requirements
-- Java 17
-- Maven
-- Docker (for PostgreSQL)
+- **Sistema operativo:** Xubuntu 25
+- **Host:** 192.168.1.10 (rete Wi-Fi locale)
+- **Java:** JDK 21
+- **Maven:** 3.x
+- **Applicazione:** user-api (Spring Boot 3.3.3)
+- **Database:** PostgreSQL 16 in Docker
+- **DB Name:** userdb
+- **DB User:** user / Password: password
+- **Porta applicazione:** 8080
+- **Accesso API:** da qualsiasi dispositivo in rete locale
 
-## Start Database
-```
-docker start postgres-userapi
-```
+## Database – Schema principale
 
-## Run Application
-```
-mvn spring-boot:run
-```
+| Campo     | Tipo        | Note                     |
+|-----------|------------|-------------------------|
+| id        | SERIAL     | PK, autoincrement       |
+| firstName | VARCHAR    | Nome utente             |
+| lastName  | VARCHAR    | Cognome utente          |
+| email     | VARCHAR    | Email                   |
+| address   | VARCHAR    | Indirizzo               |
 
-## Test Endpoints
-```
-curl http://localhost:8080/users
-curl http://localhost:8080/users/1
-```
+## Endpoints
 
-## Project Structure
-```
-src/main/java/com/example/
-  controller/
-  model/
-  repository/
-  service/
-```
+Base URL: `http://192.168.1.10:8080/users`
+
+| Metodo | Endpoint                          | Descrizione                                    | Input / Output JSON |
+|--------|----------------------------------|-----------------------------------------------|-------------------|
+| GET    | `/users`                          | Legge tutti gli utenti                         | Lista di utenti   |
+| GET    | `/users/{id}`                     | Legge singolo utente per ID                   | Utente singolo    |
+| POST   | `/users`                          | Crea nuovo utente                              | `{ "firstName": "...", "lastName": "...", "email": "...", "address": "..." }` |
+| PUT    | `/users/{id}`                     | Aggiorna intera entità utente                 | Stesso JSON di POST |
+| PATCH  | `/users/{id}`                     | Aggiorna parzialmente campi dell’utente       | `{ "campo": "valore" }` |
+| DELETE | `/users/{id}`                     | Cancella utente per ID                         | —                 |
+| GET    | `/users/search?firstName=&lastName=` | Ricerca utenti per nome e/o cognome            | Lista di utenti filtrati |
+
+### Note
+
+- Tutti gli endpoint restituiscono JSON.
+- Ricerca accetta uno o entrambi i parametri `firstName` e `lastName`.
+- PATCH accetta solo i campi da aggiornare.
+- Tutti i dati persistono nel database PostgreSQL Docker.
+- Testabili da qualsiasi dispositivo in rete locale tramite browser o Postman Desktop.
 
