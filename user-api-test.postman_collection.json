@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "1f3eefca-8296-419e-a65c-8e83ce468e59",
+		"name": "user-api-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49915307",
+		"_collection_link": "https://macbook23978-6588469.postman.co/workspace/MacBook-Team's-Workspace~0d50be7d-b327-42de-82da-282ed9772d71/collection/49915307-1f3eefca-8296-419e-a65c-8e83ce468e59?action=share&source=collection_link&creator=49915307"
+	},
+	"item": [
+		{
+			"name": "users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.10:8080/users",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.10:8080/users/6",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new-user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Andrea\",\n  \"lastName\": \"Gori\",\n  \"email\": \"agori@example.it\",\n  \"address\": \"Via Baggio 10, Firenze\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.10:8080/users",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Andrea\",\n  \"lastName\": \"Gori\",\n  \"email\": \"andrea.gori@example.it\",\n  \"address\": \"Via Baggio 99, Bologna\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.10:8080/users/6",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upgrade-user-data",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"address\": \"Piazza Nuova 1, Brescia\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.10:8080/users/6",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "name-surname",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.10:8080/users/search?firstName=Andrea&lastName=Gori",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Andrea"
+						},
+						{
+							"key": "lastName",
+							"value": "Gori"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
