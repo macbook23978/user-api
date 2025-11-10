@@ -11,16 +11,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")   // FIX IMPORTANTE
+    @Column(name = "first_name")   
     private String firstName;
 
-    @Column(name = "last_name")    // FIX IMPORTANTE
+    @Column(name = "last_name")    
     private String lastName;
 
-    @Column(name = "email")        // opzionale, ma chiaro
+    @Column(name = "email")        
     private String email;
 
-    @Column(name = "address")      // opzionale, ma chiaro
+    @Column(name = "address")      
     private String address;
 
     @Column(name = "created_at")
@@ -29,6 +29,7 @@ public class User {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    // --- Getter e Setter ---
     public Long getId() {
         return id;
     }
@@ -83,5 +84,17 @@ public class User {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    // --- Valorizzazione automatica createdAt / updatedAt ---
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) createdAt = LocalDateTime.now();
+        if (updatedAt == null) updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }

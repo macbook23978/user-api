@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo "==> Avvio container PostgreSQL..."
+echo ">>>>>> Avvio container PostgreSQL..."
 docker start postgres-userapi
 
-echo "==> Attendo 3 secondi perché il DB si inizializzi..."
-sleep 3
-
-echo "==> Avvio server Spring Boot in ascolto su tutte le interfacce..."
+echo ">>>>>> Inizializza app..."
+sleep 5
 cd ~/workspace/user-api
-mvn clean compile
+
+echo ">>>>>> Avvio server user-api..."
+mvn clean install
 mvn spring-boot:run -Dspring-boot.run.arguments=--server.address=0.0.0.0
