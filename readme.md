@@ -1,5 +1,8 @@
 # MULE4 user-api
 
+**user-api** è un servizio REST in Java/SpringBoot che espone Endpoint per gestire dati anagrafici su DB-PostgreSQL.
+
+---
 
 ## Server
 
@@ -14,6 +17,7 @@
 - **Porta applicazione:** 8080
 - **Accesso API:** da qualsiasi dispositivo in rete locale
 
+---
 
 ## Database – Schema principale
 
@@ -25,6 +29,7 @@
 | email     | VARCHAR    | Email                   |
 | address   | VARCHAR    | Indirizzo               |
 
+---
 
 ## Endpoints
 
@@ -37,9 +42,10 @@ Base URL: `http://192.168.1.10:8080/users`
 | POST   | `/users`                          | Crea nuovo utente                              | `{ "firstName": "...", "lastName": "...", "email": "...", "address": "..." }` |
 | PUT    | `/users/{id}`                     | Aggiorna intera entità utente                 | `{ "firstName": "...", "lastName": "...", "email": "...", "address": "..." }` |
 | PATCH  | `/users/{id}`                     | Aggiorna parzialmente campi dell’utente       | `{ "campo": "valore" }` |
-| DELETE | `/users/{id}`                     | Cancella utente per ID                         | {id}                 |
+| DELETE | `/users/{id}`                     | Cancella utente per ID                         | `{id}`                 |
 | GET    | `/users/search?firstName=&lastName=` | Ricerca utenti per nome e/o cognome            | Lista di utenti filtrati |
 
+---
 
 ### Note
 
@@ -47,5 +53,8 @@ Base URL: `http://192.168.1.10:8080/users`
 - Ricerca accetta uno o entrambi i parametri firstName e lastName.
 - PATCH accetta i campi firstName, lastName, email, address.
 - Tutti i dati persistono nel database PostgreSQL-Docker.
-- Endpoint disponibili in rete locale tramite curl, via browser o app (es. Postman).
+- Endpoint disponibili in rete locale tramite curl, via browser o client.
+- Test CRUD via Postman, file: `user-api-test.postman_collection.json`
+
+ 
 
